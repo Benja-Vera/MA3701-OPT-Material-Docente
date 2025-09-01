@@ -1,0 +1,48 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 3}}\\
+\textit{\large{Condiciones de optimalidad}}\\
+    \normalsize
+    27 de agosto de 2025
+\end{center}
+
+\begin{enumerate}
+	\item Considere el siguiente problema de optimización:
+		\begin{align*}
+			\min_{x \in \mathbb{R}^2} \; & x_1^2 + x_2^2 \\
+						     & (x_1 - 1)^2 + (x_2 - 1)^2 \leq 1 \\
+						     & (x_1 - 1)^2 + (x_2 + 1)^2 \leq 1.
+		\end{align*}
+		\begin{enumerate}
+			\item Esboce el conjunto factible y los conjuntos de nivel de la función objetivo de este problema. Encuentre el minimizador \(x^*\).
+			\item Obtenga las condiciones de KKT asociadas al problema. ¿Existen multiplicadores \(\lambda_1^*, \lambda_2^*\) asociados a \(x^*\)?
+		\end{enumerate}
+	\item Dado \(\alpha \geq 0\), considere el siguiente problema:
+		\begin{align*}
+			\min_{y_1, y_2} \; & y_1 \\
+					   & y_1^2 - y_2 \leq \alpha, \\
+					   & y_1^2 + y_2 \leq 0.
+		\end{align*}
+		Obtenga la solución de este problema y sus multiplicadores \(\lambda_1, \lambda_2 \geq 0\) asociados.
+
+	\textit{Indicación:} Considere por separado los casos \(\alpha = 0, \alpha > 0.\)
+\item Considere el sistema de resortes descrito en la figura \ref{fig:lal} en que los bloques tienen ancho \(w > 0\) y pueden chocar entre sí y con los muros.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{img/spring.png}
+	\caption{Sistema de resortes}
+	\label{fig:lal}
+\end{figure}
+	\begin{enumerate}
+		\item Plantee el problema de minimizar la energía potencial elástica del sistema dadas las fuerzas de contacto entre los bloques.
+		\item Obtenga las condiciones de KKT de este problema y utilícelas para dar interpretación física a los multiplicadores de Lagrange en esta situación.
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

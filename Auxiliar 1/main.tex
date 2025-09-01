@@ -9,12 +9,49 @@
     \Huge{\textbf{Auxiliar 1}}\\
 \textit{\large{Introducción y Ejemplos}}\\
     \normalsize
-    \today
+    6 de agosto de 2025
 \end{center}
 
 \begin{enumerate}
-	\item \textbf{(Pregunta 1)}
-	\item \textbf{(Pregunta 2)} lel
+	\item \textbf{(conjuntos convexos)} Decimos que $C \subseteq \mathbb{R}^n$ es \textit{convexo} si
+$$
+\forall x, y \in C, \lambda \in [0, 1] : \lambda x + (1 - \lambda)y \in C.
+$$
+Demuestre que la intersección de conjuntos convexos es convexa.
+
+	\item \textbf{(funciones convexas)} Una función $f : \mathbb{R}^n \to \mathbb{R}$ se dice convexa si
+$$
+\forall x, y \in \mathbb{R}^n, \lambda \in [0, 1] : f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda)f(y).
+$$
+
+Además, dada $f: \mathbb{R}^n \to \mathbb{R}$ (no necesariamente convexa) y $z \in \mathbb{R}$, se define el conjunto de \textit{subnivel} $z$ asociado a $f$ como
+$$
+\Gamma_z(f) = \{x \in \mathbb{R}^n : f(x) \leq z\}.
+$$
+Demuestre que si $f : \mathbb{R}^n \to \mathbb{R}$ es convexa, entonces para todo $z \in \mathbb{R}$, $\Gamma_z(f)$ es convexo.
+
+\item \textbf{(epígrafo)} Dada una función $f : \mathbb{R}^n \to \mathbb{R}$, definimos su epígrafo por
+$$
+\epi(f) = \{ (x, z) \in \mathbb{R}^n \times \mathbb{R} : f(x) \leq z\}.
+$$
+\begin{enumerate}
+	\item Demuestre que $f$ es convexa si y solo si $\epi(f)$ es convexo.
+	\item Sea $\{f_i\}_{i \in I}$ familia de funciones $f_i : \mathbb{R}^n \to \mathbb{R}$ convexas tales que para $x \in \mathbb{R}^n$, $\sup_{i \in I} f_i(x)$ existe (por ejemplo, si $I$ finito). Pruebe que $f : \mathbb{R}^n \to \mathbb{R}$ dada por
+$$
+	f(x) = \sup_{i \in I} f_i(x)
+$$
+es convexa.
+
+\end{enumerate}
+
+\item \textbf{(propuesto)} Sea $f: I \subseteq \mathbb{R} \to \mathbb{R}$ diferenciable. Pruebe que las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+	\item[(1)] $f$ convexa en $I$.
+	\item[(2)] $f'$ no-decreciente en $I$.
+	\item[(3)] $\forall x, y \in I : f(y) \geq f(x) + f'(x)(y - x)$.
+	\item[(4)] En el caso \(f \in C^2(I)\), $\forall x \in I, f''(x) \geq 0$.
+\end{enumerate}
+
 \end{enumerate}
 
 \end{document}

@@ -1,0 +1,41 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 2}}\\
+\textit{\large{Optimización sin restricciones}}\\
+    \normalsize
+    13 de agosto de 2025
+\end{center}
+
+\begin{enumerate}
+	\item Sea $A \in \mathbb{R}^{m \times n}$. Pruebe que $A^\top A \in \mathbb{R}^{n \times n}$ es semidefinida positiva. Entregue condiciones para que sea definida positiva.
+
+	\item \textbf{(Regresión de mínimos cuadrados lineal
+)} Suponga que se cuenta con $N$ datos $(x_i, y_i)_{i=1}^N$ en que $x_i \in \mathbb{R}^d$ representa *características* o *atributos* de un objeto que se piensa que predicen la *respuesta* $y_i$. A modo de ejemplo, se puede pensar que $x_i$ representa diferentes datos asociados a un terreno $i$ --tales como tamaño, distancia a la estación de metro más cercana, etc-- que se buscan relacionar con el precio $y_i$ del mismo. Se busca entonces modelar esta relación como una función lineal afín de tipo
+$$
+	y = a^\top x + b
+$$
+con $a \in \mathbb{R}^d, b \in \mathbb{R}$ escogidos adecuadamente. Estudiaremos el problema de encontrar $a, b$ bajo el criterio de minimizar el *error cuadrático medio* tomado sobre los datos $x_i, y_i$ que se tiene. Es decir, se busca encontrar $a, b$ que minimicen la función
+$$
+	f(a, b) = \sum_{i=1}^N (y_i - (a^\top x + b))^2.
+$$
+A modo de simplificación, dado $x_i \in \mathbb{R}^d$, se puede añadir una coordenada adicional definida como $x_{i, d+1} = 1$ y definir también $\theta = (a, b)$ de modo que tenemos
+$$
+	f(\theta) = \sum_{i=1}^N (y_i - \theta^\top x_i)^2.
+$$
+
+\begin{enumerate}
+	\item Pruebe que la función $f(\theta)$ es convexa.
+	\item Asumiendo que la matriz $X = (x_{i,j})_{i=1, j = 1}^{N, d+1}$ tiene columnas linealmente independientes, encuentre el único minimizador $\theta^*$ para el problema de mínimos cuadrados.
+	\item Deduzca la fórmula explícita para $(a, b)$ en el caso particular $d=1$.
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
