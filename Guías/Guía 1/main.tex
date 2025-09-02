@@ -1,0 +1,87 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Guía de Ejercicios 1}}\\
+    \normalsize
+    \today
+\end{center}
+
+\section{Preliminares}
+
+\begin{enumerate}
+	\item \textbf{(Desigualdad de Cauchy Schwarz)} Dados \(a, u \in \mathbb{R}^n\),
+		\begin{enumerate}
+			\item Escriba la función \(q(t) = \norm{a + tu}^2\) como un polinomio cuadrático en \(t\).
+			\item Sabiendo que esta función es no negativa, utilice el discriminante cuadrático para probar que
+				\begin{equation} \label{eq:cauchy-schwarz}
+					|a^\top u| \leq \norm{a} \norm{u}.
+				\end{equation}
+			\item Concluya además que \eqref{eq:cauchy-schwarz} se tiene con igualad si y solo si \(a, u\) son linealmente dependientes.
+			\item Sea \(B(x_0, r) = \qty{x_0 + u : \norm{u} \leq r}\) la bola en \(\mathbb{R}^n\) en \(x_0\) de radio \(r\). Utilice lo probado anteriormente para mostrar que el problema
+				\[
+					\max_{x \in B(x_0, r)} a^\top x
+				\]
+				tiene el maximizador \(x^* = x_0 + \frac{a}{\norm{a}} r\). Obtenga el valor óptimo.
+		\end{enumerate}
+\end{enumerate}
+
+\section{Modelamiento}
+
+\begin{enumerate}
+	\item \textbf{(problema de la dieta)} Suponga que de cada nutriente \(i\) \((i = 1, \dots, m)\) se desea obtener una cantidad de al menos \(b_i\). Para esto, se dispone de diferentes alimentos \(j\) \((j = 1, \dots, n)\) cada uno con un costo \(c_j\). Si se sabe que el alimento \(j\) proporciona una cantidad \(a_{ij}\) del nutriente \(i\), escriba el problema de optimización en que se busca satisfacer los requerimientos nutricionales deseados a costo mínimo.
+
+		\textit{Indicación:} Suponga que es posible costear una cantidad no entera \(x_j\) de cada alimento.
+	\item \textbf{(centro de Chebyshev de un poliedro)} Un \textit{poliedro} en \(\mathbb{R}^n\) es un conjunto que se puede escribir en la forma \(P = \qty{x \in \mathbb{R}^n : a_i^\top x \leq b_i, i =1, \dots, m}\). Es decir, como el conjunto solución de un sistema de desigualdades lineales \(Ax \leq b\) con \(A \in \mathbb{R}^{m  \times n}, b \in \mathbb{R}^m\). El \textit{centro de Chebyshev} de un poliedro \(P\) corresponde al punto \(x_c \in P\) que se ubica más lejos de su frontera. Es decir, el centro de la bola \(B(x_c, r) = \qty{x_c + u : \norm{u} \leq r}\) de mayor radio tal que \(B(x_c, r) \subseteq P\).
+	\begin{enumerate}
+		\item Suponga primero que \(P = \qty{x \in \mathbb{R}^n : a^\top x \leq b}\). Es decir, que \(P\) es dado por una sola desigualdad. Modele la restricción \(B(x_c, r) \subseteq P\) como una restricción lineal en \(x_c, r\).
+			
+			\textit{Indicación:} Utilice lo probado en el problema relativo a la desigualdad de Cauchy Schwarz.
+		\item Usando lo anterior, formule el problema de encontrar el centro de Chebyshev de un poliedro \(P\) arbitrario.
+	\end{enumerate}
+	\item \textbf{(planificación dinámica de actividades)} Se modela una fábrica capaz de producir \(m\) productos (\(i = 1, \dots, m\)) y comprendida por \(n\) sectores (\(j=1, \dots, n\)) cuya actividad se desea planificar de manera óptima a través de \(N\) periodos de tiempo \(t = 1, \dots, N\). Sea \(x_j(t) \geq 0\) el nivel de actividad asignado al sector \(j\) en el periodo \(t\) y denotemos por:
+		\begin{itemize}
+			\item \(a_{ij}\) la cantidad del producto \(i\) producido por nivel de actividad en el sector \(j\).
+			\item \(b_{ij}\) la cantidad del producto \(i\) consumido por nivel de actividad en el sector \(j\).
+			\item \(g_0 \in \mathbb{R}^m\) la dotación inicial de cada bien \(i\) para el tiempo \(0\).
+		\end{itemize}
+		Suponga que en cada periodo de tiempo \(i\) no se puede consumir más que los productos que se disponen del periodo anterior. Si \(c_i(t)\) corresponde al valor del producto \(i\) en el tiempo \(t\), formule el problema de maximizar el valor de los bienes en exceso no consumidos por las actividades agregado sobre todos los periodos de tiempo.
+
+		\textit{Indicación:} Defina
+		\begin{align*}
+			s(0) &= g_0 - B x(1), \\
+			s(t) &= Ax(t) - Bx(t+1), \quad t = 1, \dots, N-1, \\
+			s(N) &= Ax(N).
+		\end{align*}
+		Interprete estas variables. Note además --a modo de comentario-- que esta formulación permite que el valor \(c_i(t)\) sea negativo si el producto \(i\) corresponde, por ejemplo, a un contaminante.
+
+\end{enumerate}
+
+\section{Condiciones de primer orden}
+
+\begin{enumerate}
+	\item Dado el problema
+		\begin{align*}
+			\min_{x_1, x_2} \; & x_1^2 + x_2^2 \\
+					   & x_1^2 + x_2^2 \leq 5 \\
+					   & x_1 + 2x_2 = 4 \\
+					   &x_1, x_2 \geq 0,
+		\end{align*}
+		verifique que \((x_1, x_2) = \left(\frac{4}{5}, \frac{8}{5}\right)\) es mínimo global.
+	\item Encuentre el punto más cercano al origen de coordenadas dentro del conjunto
+		\[
+			M = \qty{x \in \mathbb{R}^2 : x_1 + x_2 \geq 4, 2x_1 + x_2 \geq 5}.
+		\]
+	\item Para \(n \geq 2\), considere el problema
+		\begin{align*}
+			\min_{x} \; & x_1 \\
+				    & \sum_{i=1}^n \left(x_i - \frac{1}{n}\right)^2 \leq \frac{1}{n(n-1)} \\
+				    & \sum_{i=1}^n x_i = 1.
+		\end{align*}
+		Pruebe que el punto \(\left(0, \frac{1}{n-1}, \dots, \frac{1}{n-1}\right)\) es óptimo.
+\end{enumerate}
+\end{document}
