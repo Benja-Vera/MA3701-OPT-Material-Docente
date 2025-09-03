@@ -1,0 +1,35 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 4}}\\
+\textit{\large{Condiciones de segundo orden}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item Considere el siguiente problema de optimización:
+		\begin{align*}
+			\min_{x, y} \; & x^2 - y^2 \\
+				       & x - y = 1 \\
+				       & x, y \geq 0.
+		\end{align*}
+		\begin{enumerate}
+			\item Escriba las condiciones de KKT para este problema. Muestre que solo existe un punto estacionario.
+			\item Verifique la condición suficiente de segundo orden para el punto crítico obtenido.
+			\item Argumente que el mínimo encontrado es global.
+		\end{enumerate}
+	\item Considere el problema
+		\begin{align*}
+			\min_{x, y} \; & -x^2 - 4xy - y^2 \\
+					   & x^2 + y^2 = 1.
+		\end{align*}
+		Usando la condición suficiente de segundo orden, verifique que \(\left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)\) es mínimo local.
+\end{enumerate}
+
+\end{document}
