@@ -11,9 +11,8 @@
     \today
 \end{center}
 
-\section{Preliminares}
-
 \begin{enumerate}
+	\section{Preliminares}
 	\item \textbf{(Desigualdad de Cauchy Schwarz)} Dados \(a, u \in \mathbb{R}^n\),
 		\begin{enumerate}
 			\item Escriba la función \(q(t) = \norm{a + tu}^2\) como un polinomio cuadrático en \(t\).
@@ -28,11 +27,9 @@
 				\]
 				tiene el maximizador \(x^* = x_0 + \frac{a}{\norm{a}} r\). Obtenga el valor óptimo.
 		\end{enumerate}
-\end{enumerate}
 
 \section{Modelamiento}
 
-\begin{enumerate}
 	\item \textbf{(problema de la dieta)} Suponga que de cada nutriente \(i\) \((i = 1, \dots, m)\) se desea obtener una cantidad de al menos \(b_i\). Para esto, se dispone de diferentes alimentos \(j\) \((j = 1, \dots, n)\) cada uno con un costo \(c_j\). Si se sabe que el alimento \(j\) proporciona una cantidad \(a_{ij}\) del nutriente \(i\), escriba el problema de optimización en que se busca satisfacer los requerimientos nutricionales deseados a costo mínimo.
 
 		\textit{Indicación:} Suponga que es posible costear una cantidad no entera \(x_j\) de cada alimento.
@@ -59,11 +56,8 @@
 		\end{align*}
 		Interprete estas variables. Note además --a modo de comentario-- que esta formulación permite que el valor \(c_i(t)\) sea negativo si el producto \(i\) corresponde, por ejemplo, a un contaminante.
 
-\end{enumerate}
-
 \section{Condiciones de primer orden}
 
-\begin{enumerate}
 	\item Dado el problema
 		\begin{align*}
 			\min_{x_1, x_2} \; & x_1^2 + x_2^2 \\
@@ -83,5 +77,47 @@
 				    & \sum_{i=1}^n x_i = 1.
 		\end{align*}
 		Pruebe que el punto \(\left(0, \frac{1}{n-1}, \dots, \frac{1}{n-1}\right)\) es óptimo.
+	\item Considere el siguiente problema:
+		\begin{align*}
+			\min \; & 3x + 2y \\
+				& x^2 \leq y \\
+				& x + y \leq 6.
+		\end{align*}
+		\begin{enumerate}
+			\item Demuestre que el problema es convexo y que todos los puntos factibles satisfacen alguna condición de calificación.
+			\item Encuentre los candidatos a solución que satisfacen las condiciones de optimalidad de KKT.
+			\item Demuestre que el problema tiene solución y determínela.
+		\end{enumerate}
+	\item Considere el siguiente problema de optimización:
+		\begin{align*}
+			\min \; & x^2 - 6x \\
+				& (2 - x)^3 \geq y \\
+				& y \geq 0.
+		\end{align*}
+		\begin{enumerate}
+			\item Grafique el conjunto factible y determine los puntos factibles en los cuales el cono tangente es igual al cono linealizante.
+			\item Demuestre que dentro de los puntos pertenecientes al conjunto anterior, no existen candidatos que satisfagan las condiciones de optimalidad de KKT.
+			\item Demuestre que el problema posee solución, encuéntrela y explique por qué esta no satisface las condiciones de optimalidad de KKT.
+		\end{enumerate}
+\section{Segundo orden y sensibilidad}
+	\item Considere el siguiente problema de optimización:
+		\begin{align*}
+			\max \; &-x + 3y - 3z^2 \\
+				& x - y - z = \frac{9}{10} \\
+				& -x + 2y + z^2 = \frac{1}{100}.
+		\end{align*}
+		\begin{enumerate}
+			\item Demuestre que todo punto factible satisface la condición de independencia lineal.
+			\item Determine los puntos críticos del problema usando las condiciones de optimalidad de KKT.
+			\item Use el criterio de segundo orden para determinar si los puntos encontrados en la parte anterior son máximos locales del problema.
+			\item Demuestre que la función objetivo es coerciva en el conjunto factible y concluya que el problema tiene solución, diga cuál es.
+			\item Considere la siguiente familia de problemas perturbados:
+				\begin{align*}
+					\max \; & (t - 1)x + (3-t)y + (2t - 3)z^2 \tag{$P_t$} \\
+						& x - y(t+1) - z = \frac{9}{10} - t^2 \\
+						& (t - 1)x + 2y + z^2 = \frac{1}{100} - t.
+				\end{align*}
+				Demuestre que existen funciones diferenciables \(x(t), y(t), z(t), \lambda_1(t), \lambda_2(t)\) definidas en una vecindad de \(t = 0\) tales que \((x(t), y(t), z(t), \lambda_1(t), \lambda_2(t))\) es la única solución del sistema de condiciones de optimalidad de KKT asociadas al problema \((P_t)\) y \(x(t), y(t), z(t)\) es un mínimo local estricto de \((P_t)\).
+		\end{enumerate}
 \end{enumerate}
 \end{document}
