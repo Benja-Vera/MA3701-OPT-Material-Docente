@@ -13,33 +13,227 @@
 \end{center}
 
 \begin{enumerate}
-	\item Suponga que se dispone de \(n\) fábricas donde se produce cereal, así como \(m\) tiendas que lo comercializan. Cada fábrica \(i\) puede producir como máximo \(s_i\) kilogramos de cereal, con un costo de \(b_i\) por kilogramo, mientras que cada tienda \(j\) tiene una demanda fija de \(d_j\) kilogramos que debe satisfacerse. El costo de transportar un kilogramo de cereal desde la fábrica \(i\) hasta la tienda \(j\) es \(c_{ij}\). Suponga durante este problema que la demanda agregada de todas las tiendas \(\sum_{j=1}^m d_j\) es menor o igual que la capacidad de producción agregada \(\sum_{i=1}^n s_i\).
-		\begin{enumerate}
-			\item Formule un modelo de optimización que permita decidir simultáneamente cuántos kilogramos producir en cada fábrica y cuántos enviar desde cada fábrica \(i\) hacia cada tienda \(j\), de manera de minimizar el costo total de producción y transporte. En su formulación, defina claramente las variables de decisión, y explique el significado de cada restricción y de la función objetivo.
-			\item Calcule las condiciones de KKT para la formulación obtenida en a).
+	\item Suponga que se dispone de \(n\) fábricas donde se produce cereal, así como \(m\) tiendas que lo comercializan. Cada fábrica \(i\) puede producir como máximo \(s_i\) kilogramos de cereal, con un costo de \(b_i\) por kilogramo, mientras que cada tienda \(j\) tiene una demanda fija de \(d_j\) kilogramos que debe satisfacerse. El costo de transportar un kilogramo de cereal desde la fábrica \(i\) hasta la tienda \(j\) es \(c_{ij}\). Suponga durante este problema que la demanda agregada de todas las tiendas \(\sum_{j=1}^m d_j\) es menor o igual que la capacidad de producción agregada \(\sum_{i=1}^n s_i\). Formule un modelo de optimización que permita decidir simultáneamente cuántos kilogramos producir en cada fábrica y cuántos enviar desde cada fábrica \(i\) hacia cada tienda \(j\), de manera de minimizar el costo total de producción y transporte. En su formulación, defina claramente las variables de decisión, y explique el significado de cada restricción y de la función objetivo.
 
-		\end{enumerate}
+		\textbf{Solución:} Consideremos las siguientes variables de decisión:
+		\begin{itemize}
+			\item \(y_i\) : kilogramos producidos en la fábrica \(i\).
+			\item \(x_{ij}\) : kilogramos a enviar desde la fábrica \(i\) a la tienda \(j\).
+		\end{itemize}
+		\[
+		\text{\textcolor{ForestGreen}{(1.0) nombrar variables.}}
+		\]
+		De este modo, el costo total de producción y transporte viene dado por
+		\[
+			f(x, y) = \sum_{i=1}^n b_i y_i + \sum_{i=1}^n \sum_{j=1}^m c_{ij} x_{ij}.
+		\]
+		\[
+			\text{\textcolor{ForestGreen}{(1.0) función objetivo.}}
+		\]
+		Las restricciones propias de este problema quedan entonces dadas por:
+		\begin{itemize}
+			\item \textbf{Positividad}
+				\begin{align*}
+					\forall i = 1, \dots, n &: y_i \geq 0, \\
+					\forall i = 1, \dots, n, j = 1, \dots, m &: x_{ij} \geq 0.
+				\end{align*}
+			\[
+				\text{\textcolor{ForestGreen}{(0.5) variables deben ser positivas.}}
+			\]
+		\item \textbf{Demanda}
+			\[
+				\forall j = 1, \dots, m : \sum_{i=1}^n x_{ij} \geq d_j.
+			\]
+			\[
+				\text{\textcolor{ForestGreen}{(1.0) restricción de demanda (NOTA: también es válido que la restricción sea de igualdad).}}
+			\]
+		\item \textbf{Capacidad}
+			\[
+				\forall i = 1, \dots, n : y_i \leq s_i.
+			\]
+			\[
+				\text{\textcolor{ForestGreen}{(1.0) restricción de producción máxima.}}
+			\]
+		\item \textbf{Envío de producción}
+			\[
+				\forall i = 1, \dots, n : y_i = \sum_{j=1}^m x_{ij}.
+			\]
+			\[
+				\text{\textcolor{ForestGreen}{(1.0) relación entre las dos variables (NOTA: la restricción también puede ser en el sentido \(\geq\)).}}
+			\]
+		\end{itemize}
+		En conclusión, el problema de optimización queda como sigue:
+		\begin{align*}
+			\min_{x,y} & \left\{ \sum_{i=1}^n b_i y_i + \sum_{i=1}^n \sum_{j=1}^m c_{ij}x_{ij}\right\} \\
+				   & \forall j : \sum_{i=1}^n x_{ij} \geq d_j \\
+				   & \forall i : y_i = \sum_{j=1}^m x_{ij} \\
+				   & \forall i, j : x_{ij} \geq 0 \\
+				   & \forall i : 0 \leq y_i \leq s_i.
+		\end{align*}
+		\[
+			\text{\textcolor{ForestGreen}{(0.5) concluir.}}
+		\]
+		\textcolor{ForestGreen}{\textit{Solución alternativa:} Notar que la ecuación \(y_i = \sum_{j} x_{ij} \) permite eliminar la variable \(y_i\). Es posible plantear el problema solo en términos de los \(x_{ij}\).}
 	\item Considere el siguiente problema de minimización:
 		\begin{align*}
 			\min_{x, y} \; & x^2 + y^2 \\
 				       & \frac{x^2}{4} + y^2 = 1.
 		\end{align*}
 		\begin{enumerate}
-			\item Obtenga las condiciones de KKT para este problema, utilícelas para obtener todos los puntos críticos con sus multiplicadores asociados.
-			\item Para los puntos \((x_0, y_0)\) obtenidos en a), obtenga el cono de direcciones críticas \(K(x_0, y_0)\).
-			\item Obtenga la matriz Hessiana del Lagrangeano \(\nabla_{x, y}^2 L(x_0, y_0, \mu_0)\) en los puntos obtenidos.
-			\item Utilizando la información anterior, decida cuáles de estos puntos son mínimos locales del problema. Concluya entregando un candidato a mínimo global del problema.
+			\item (1 pt) Obtenga las condiciones de KKT para este problema, utilícelas para obtener todos los puntos críticos con sus multiplicadores asociados.
+			\item (2 pt) Para los puntos \((x_0, y_0)\) obtenidos en a), obtenga el cono de direcciones críticas \(K(x_0, y_0)\).
+			\item (1 pt) Obtenga la matriz Hessiana del Lagrangeano \(\nabla_{x, y}^2 L(x_0, y_0, \mu_0)\) en los puntos obtenidos.
+			\item (2 pt) Utilizando la información anterior, decida cuáles de estos puntos son mínimos locales del problema. Concluya entregando un candidato a mínimo global del problema.
+		\end{enumerate}
+
+		\textbf{Solución:} 
+		\begin{enumerate}
+			\item Las condiciones de KKT quedan
+		\begin{align*}
+			2x + \mu \cdot \frac{x}{2} &= 0, \\
+			2y + \mu \cdot 2y &= 0, \\
+			\frac{x^2}{4} + y^2 &= 1.
+		\end{align*}
+		\[
+			\text{\textcolor{ForestGreen}{(0.5) obtener condiciones.}}
+		\]
+		Las cuales factorizando se pueden escribir como:
+		\begin{align}
+			x \left(2 + \frac{\mu}{2}\right) &= 0, \label{KKT1} \\
+			y (2 + 2 \mu) &= 0, \label{KKT2} \\
+			\frac{x^2}{4} + y^2 &= 1. \label{KKT3}
+		\end{align}
+		Ahora, para resolver, consideramos casos:
+		\begin{itemize}
+			\item Si \(x = 0\), por \eqref{KKT3}, \(y = \pm 1\). En \eqref{KKT2}, \(\mu = -1\), obteniendo
+				\[
+					(x, y, \mu) = (0, \pm 1, -1).
+				\]
+			\item Si \(x \neq 0\), por \eqref{KKT1}, \(\mu = -4\). En \eqref{KKT2}, \(y = 0\). En \eqref{KKT3}, \(x = \pm 2\), obteniendo
+				\[
+					(x, y, \mu) = (\pm 2, 0, -4).
+				\]
+		\end{itemize}
+		\[
+			\text{\textcolor{ForestGreen}{(0.5) resolver.}}
+		\]
+	\item Recordemos que
+		\[
+			K(x_0) = \{ d \in \mathbb{R}^n : \nabla h(x_0)^\top d = 0, \nabla f(x_0)^\top d \leq 0\}.
+		\]
+		En este caso,
+		\[
+			\nabla h(x, y) = \mqty(\frac{x}{2} \\ 2y), \qquad \nabla f(x) = \mqty(2x \\ xy).
+		\]
+		\[
+			\text{\textcolor{ForestGreen}{(1.0) definición y gradientes involucrados.}}
+		\]
+		Ahora, evaluamos en los pares de puntos obtenidos:
+		\begin{enumerate}
+			\item En \((0, \pm 1)\), nos quedan las condiciones
+				\begin{align*}
+					0 \cdot d_1 \pm 2 \cdot d_2 = 0 &\implies d_2 = 0, \\
+					0 \cdot d_1 \pm 2 \cdot d_2 \leq 0 & \implies \pm d_2 \leq 0.
+				\end{align*}
+				La segunda condición es consecuencia de la primera, de modo que se obtiene
+				\[
+					K(0, \pm 1) = \qty{\mqty(d_1 \\ 0) : d_1 \in \mathbb{R}}.
+				\]
+				\[
+					\text{\textcolor{ForestGreen}{(0.5) primer grupo.}}
+				\]
+			\item En \((\pm 2, 0)\), nos quedan las condiciones
+				\begin{align*}
+					\pm d_1 + 0 \cdot d_2 = 0 &\implies d_1 = 0, \\
+					\pm 4d_1 + 0 \cdot d_2 \leq 0 &\implies \pm d_1 \leq 0.
+				\end{align*}
+				Nuevamente, la segunda condición es consecuencia de la primera, de modo que se obtiene
+				\[
+					K(\pm 2, 0) = \qty{\mqty(0 \\ d_2) : d_2 \in \mathbb{R}}.
+				\]
+				\[
+					\text{\textcolor{ForestGreen}{(0.5) segundo grupo.}}
+				\]
+		\end{enumerate}
+	\item El Lagrangeano es dado por
+		\[
+			\mathcal{L}(x, y \mu) = x^2 + y^2 + \mu \left(\frac{x^2}{4} + y^2 - 1\right).
+		\]
+		De modo que sus derivadas las obtenemos como sigue:
+		\begin{align*}
+			\pdv{\mathcal{L}}{x} &= 2x + \frac{\mu x}{2}, \\
+			\pdv{\mathcal{L}}{y} &= 2y + 2\mu y, \\
+			\pdv[2]{\mathcal{L}}{x} &= 2 + \frac{\mu}{2}, \\
+			\pdv[2]{\mathcal{L}}{y} &= 2 + 2\mu, \\
+			\frac{\partial^2 \mathcal{L}}{\partial x \partial y} &= 0.
+		\end{align*}
+		\[
+			\text{\textcolor{ForestGreen}{(0.5) cálculo de las derivadas.}}
+		\]
+		Así, la matriz Hessiana queda
+		\[
+			\nabla^2_{xy}\mathcal{L}(x, y, \mu) = \mqty(2 + \frac{\mu}{2} & 0 \\ 0 & 2 + 2\mu).
+		\]
+		En particular,
+		\begin{align*}
+			\nabla^2_{xy}\mathcal{L}(0, \pm 1, -1) &= \mqty(\frac{3}{2} & 0 \\ 0 & 0), \\
+			\nabla^2_{xy}\mathcal{L}(\pm 2, 0, -4) &= \mqty(0 & 0 \\ 0 & -6).
+		\end{align*}
+		\[
+			\text{\textcolor{ForestGreen}{(0.5) conclusión.}}
+		\]
+	\item Se puede ver que los puntos \((\pm 2, 0)\) no son mínimos locales ya que el cono crítico es no trivial y \(\nabla^2 L\) es semidefinido negativo. Por otro lado, para los puntos \((0, \pm 1)\), sea \(d_1 \in \mathbb{R}\) y vemos que
+		\[
+			\mqty(d_1 & 0) \mqty(\frac{3}{2} & 0 \\ 0 & 0) \mqty(d_1 \\ 0) = \frac{3}{2} d_1^2 > 0
+		\]
+		siempre que \(d_1 \neq 0\). Con ello, se concluye que \((0, \pm 1)\) son mínimos locales. \textcolor{magenta}{Nota: No basta decir que la matriz es semidefinida positiva, la desigualdad debe ser estricta.}
+		\[
+			\text{\textcolor{ForestGreen}{(1.0) clasificar los puntos críticos.}}
+		\]
+
+		Ya que a condición de calificación de independencia lineal se cumple en todo punto del conjunto factible y estos puntos \((0, \pm 1)\) tienen igual valor \(1\), corresponden a los mínimos globales. \textcolor{magenta}{Nota: No se puede utilizar la condición de calificación de Slater, el problema no es convexo.}
+		\[
+			\text{\textcolor{ForestGreen}{(1.0) discutir calificación y concluir.}}
+		\]
 		\end{enumerate}
 	\item 
 		\begin{enumerate}
-			\item Obtenga el minimizador \(x^*(u)\) y la función valor \(v(u)\) asociada al problema
+			\item (3pt) Obtenga el minimizador \(x^*(u)\) y la función valor \(v(u)\) asociada al problema
 				\begin{align*}
 					\min_{x \in \mathbb{R}}\; & x^2 + 1 \\
 								  & (x - 2)(x - 4) \leq u,
 				\end{align*}
 				para cada \(u \in \mathbb{R}\) tal que el problema sea factible.
-			\item Para \(u \leq 8\), utilice las condiciones de KKT para obtener el multiplicador \(\lambda^*(u)\) asociado a la solución \(x^*(u)\).
-			\item Verifique que se cumple la igualdad \(v'(u) = -\lambda^*(u)\)
+			\item (2pt) Para \(u \leq 8\), utilice las condiciones de KKT para obtener el multiplicador \(\lambda^*(u)\) asociado a la solución \(x^*(u)\).
+			\item (1pt) Verifique que se cumple la igualdad \(v'(u) = -\lambda^*(u)\)
+		\end{enumerate}
+
+		\textbf{Solución:}
+		\begin{enumerate}
+			\item Notemos que, dado \(u \in \mathbb{R}\), el conjunto factible viene dado por la solución de una inecuación cuadrática cuyo vértice es \(3\). Más precisamente, el conjunto factible, cuando es no vacío, viene dado por
+				\[
+					x \in \qty[3 - \sqrt{1 + u}, 3 + \sqrt{1 + u}].
+				\]
+				También note que el mínimo global de la función objetivo es \(x = 0\). De modo que hay dos casos dependiendo de \(u\):
+				\begin{itemize}
+					\item O \(x^* = 0\) es factible, de modo que es el minimizador,
+					\item o el conjunto factible es subconjunto de \(\mathbb{R}_+\) donde la función objetivo es creciente, por lo que el mínimo se alcanzará en el extremo izquierdo del intervalo.
+				\end{itemize}
+				La condición para que \(0\) sea factible viene dada por
+				\begin{align*}
+					& 3 - \sqrt{1 + u} \leq 0 \\
+					\implies & \sqrt{1 + u} \geq 3 \\
+					\implies & 1 + u \geq 9 \\
+					\implies & u \geq 8.
+				\end{align*}
+				Así, el minimizador viene dado por
+				\[
+					x^*(u) = \begin{cases}
+						0 & u > 8, \\
+						3 - \sqrt{1+u} & u \leq 8.
+					\end{cases}
+				\]
+				En consecuencia, la función valor tiene la forma
 		\end{enumerate}
 \end{enumerate}
 
