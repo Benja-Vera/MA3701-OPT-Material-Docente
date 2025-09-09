@@ -123,7 +123,7 @@
 		\]
 		En este caso,
 		\[
-			\nabla h(x, y) = \mqty(\frac{x}{2} \\ 2y), \qquad \nabla f(x) = \mqty(2x \\ xy).
+			\nabla h(x, y) = \mqty(\frac{x}{2} \\ 2y), \qquad \nabla f(x, y) = \mqty(2x \\ 2y).
 		\]
 		\[
 			\text{\textcolor{ForestGreen}{(1.0) definición y gradientes involucrados.}}
@@ -157,7 +157,7 @@
 		\end{enumerate}
 	\item El Lagrangeano es dado por
 		\[
-			\mathcal{L}(x, y \mu) = x^2 + y^2 + \mu \left(\frac{x^2}{4} + y^2 - 1\right).
+			\mathcal{L}(x, y, \mu) = x^2 + y^2 + \mu \left(\frac{x^2}{4} + y^2 - 1\right).
 		\]
 		De modo que sus derivadas las obtenemos como sigue:
 		\begin{align*}
@@ -214,11 +214,17 @@
 				\[
 					x \in \qty[3 - \sqrt{1 + u}, 3 + \sqrt{1 + u}].
 				\]
+				\[
+					\text{\textcolor{ForestGreen}{(1.0) describir conjunto factible.}}
+				\]
 				También note que el mínimo global de la función objetivo es \(x = 0\). De modo que hay dos casos dependiendo de \(u\):
 				\begin{itemize}
 					\item O \(x^* = 0\) es factible, de modo que es el minimizador,
 					\item o el conjunto factible es subconjunto de \(\mathbb{R}_+\) donde la función objetivo es creciente, por lo que el mínimo se alcanzará en el extremo izquierdo del intervalo.
 				\end{itemize}
+				\[
+					\text{\textcolor{ForestGreen}{(1.0) describir dónde se ubica el mínimo.}}
+				\]
 				La condición para que \(0\) sea factible viene dada por
 				\begin{align*}
 					& 3 - \sqrt{1 + u} \leq 0 \\
@@ -233,7 +239,44 @@
 						3 - \sqrt{1+u} & u \leq 8.
 					\end{cases}
 				\]
-				En consecuencia, la función valor tiene la forma
+				En consecuencia, la función valor es:
+				\[
+					v(u)= \begin{cases}
+						1 & u > 8, \\
+						11 - 6 \sqrt{1 + u} + u & u \leq 8.
+					\end{cases}
+				\]
+				\[
+					\text{\textcolor{ForestGreen}{(1.0) concluir.}}
+				\]
+			\item El sistema de KKT es dado por
+				\begin{align*}
+					2x + \lambda(2x - 6) &= 0, \\
+					\left((x - 2)(x - 4) - u \leq 0\right) &\perp (\lambda \geq 0).
+				\end{align*}
+				\[
+					\text{\textcolor{ForestGreen}{(1.0) plantear sistema.}}
+				\]
+				\textcolor{ForestGreen}{(Nota: La última condición puede escribirse como las dos desigualdades y \(\lambda \cdot ((x - 2)(x - 4) - u) = 0\))}
+
+				Para \(u \leq 8\), sabemos que \(x = 3 - \sqrt{1 + u}\). De modo que despejamos el multiplicador de la ecuación de KKT, obteniendo
+				\[
+					\lambda^*(u) = \frac{3}{\sqrt{1 + u}} - 1.
+				\]
+				\[
+					\text{\textcolor{ForestGreen}{(0.8) obtener multiplicador.}}
+				\]
+				Nótese que esto es efectivamente no negativo para \(u \leq 8\).
+				\[
+					\text{\textcolor{ForestGreen}{(0.2) abordar positividad.}}
+				\]
+			\item Derivando directamente la función valor obtenida en a), vemos que
+				\[
+					v'(u) = 1 - \frac{6}{2 \sqrt{1+u}} = 1 - \frac{3}{\sqrt{1 + u}} = - \lambda^*(u).
+				\]
+				\[
+					\text{\textcolor{ForestGreen}{(1.0) derivación.}}
+				\]
 		\end{enumerate}
 \end{enumerate}
 
