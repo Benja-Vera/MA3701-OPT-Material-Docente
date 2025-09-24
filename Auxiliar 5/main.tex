@@ -1,0 +1,41 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 5}}\\
+\textit{\large{Método de máximo descenso}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item Sea $f: \mathbb{R}^n \to \mathbb{R}$ tal que \(\nabla f\) es \(L\)-Lipschitz. En esta pregunta obtendremos garantías teóricas sobre el ritmo de convergencia del método iterativo del máximo descenso con paso fijo dado por
+		\[
+			x_{k+1} = x_k - \alpha \nabla f(x_k).
+		\]
+	en que \(\alpha > 0\) se debe elegir de manera óptima. Para esto, proceda como sigue:
+	\begin{enumerate}
+		\item Pruebe que:
+		\[
+	\forall x, y \in \mathbb{R}^n : f(y) \leq f(x) + \nabla f(x)^\top (y - x) + \frac{L}{2} \norm{y - x}^2.
+		\]
+Concluya que para $d \in \mathbb{R}^n, \alpha \in \mathbb{R}$, se tiene que
+$$
+	f(x + \alpha d) \leq f(x) + \alpha \nabla f(x)^\top d + \alpha^2 \frac{L}{2} \norm{d}^2.
+$$
+\item Tomando $d = - \nabla f(x)$, obtenga $\overline{\alpha}$ que minimiza el lado derecho de la desigualdad. Deduzca con ello una cota para $f(x_{k+1})$ en que $x_{k+1} = x_k - \overline{\alpha}\nabla f(x)$.
+\item A partir de la cota obtenida anteriormente y suponiendo que $f$ es acotada inferiormente por $\overline{f}$, deduzca una fórmula que permita obtener el número de iteraciones requeridas para obtener $x_k$ con $\norm{\nabla f(x_k)} < \epsilon$.
+	\end{enumerate}
+\item Considere ahora la función \(f: \mathbb{R}^2 \to \mathbb{R}\) dada por \(f(x) = x_1^2 + x_2^2\).
+	\begin{enumerate}
+		\item Obtenga la constante de Lipschitz de \(\nabla f\) y deduzca el paso \(\overline{\alpha}\) asociado.
+		\item Encuentre \(M\) tal que \(x_{k+1} = Mx_k\). Obtenga con ello una fórmula explícita para \(x_k\) si las iteraciones se inician desde \(x_0 = (1, 1)\).
+		\item Calcule la norma del gradiente en cada iteración \(x_k\) y compare con la cota obtenida en la pregunta anterior.
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
