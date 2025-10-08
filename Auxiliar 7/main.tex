@@ -1,0 +1,34 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 7}}\\
+\textit{\large{Repaso}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item Considere el método de descenso de gradiente sobre la función $f(x) = x^2$ a paso constante $\alpha > 0$.
+		\begin{enumerate}
+			\item Dado $x_0 \neq 0$, encuentre una expresión analítica para $x_n$. Muestre que no hay convergencia si $\alpha = 1$. Evalúe la convergencia también para $\alpha = 0.01, 0.0001$.
+			\item Muestre que para $\alpha = \frac{1}{L}$ con $L$ la constante de Lipschitz de $f'(x)$, el método obtiene convergencia en un solo paso desde cualquier $x_0 \in \mathbb{R}$.
+			\item Sea $\phi(\alpha) = f(x_n + \alpha p_n)$ con $p_n = -f'(x_n)$. Dado $x_n = 1$, pruebe que $\alpha = 1$ no satisface la condición de Armijo para ningún $c_1 > 0$.
+			\item Suponiendo que $\alpha = 0.0001$ cumple la condición de curvatura, encuentre un intervalo para $c_2$. Evalúe en base a esto lo que podría estar sucediendo con la convergencia.
+		\end{enumerate}
+	\item Considere el problema de optimización siguiente
+$$
+\min_x \{tx - \log(x)\}
+$$
+en que $t > 0$ es un parámetro fijo.
+\begin{enumerate}
+	\item Encuentre el minimizador global $x^*$ de esta función.
+	\item Dado $x > 0$, encuentre $x^+$, la siguiente iteración de acuerdo al método de Newton. Pruebe que la convergencia $x_n \to x^*$ de esta iteración es cuadrática en un intervalo $I$ a determinar por usted.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
