@@ -1,0 +1,58 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 6}}\\
+\textit{\large{Método de Newton y gradiente conjugado}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{(método de Herón)} El método de Herón para aproximar raíces cuadradas consiste, dado $a > 0$, en iterar, a partir de \(x_0 > 0\) dado, de acuerdo a la siguiente fórmula:
+$$
+	x_{n+1} = \frac{1}{2} \left(x_n + \frac{a}{x_n}\right).
+$$
+\begin{enumerate}
+	\item Suponiendo que $x_n \to L \neq 0$, pruebe que $L^2 = a$.
+	\item Interprete esta iteración en términos del método de Newton aplicado a resolver la ecuación $f(x) = x^2 - a = 0$.
+	\item Se ha observado que el número de dígitos de precisión de $x_{n+1}$ es aproximadamente el doble que el de $x_n$ ¿A qué se debe esto?
+\end{enumerate}
+\item En la figura se muestra cómo se dobla una lámina de cartón para formar una caja de leche:
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/milk1.png}
+        \caption{Lámina a ser doblada}
+        \label{fig-milk-1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/milk2.png}
+        \caption{Caja de leche resultante}
+        \label{fig-milk-2}
+    \end{subfigure}
+    \label{fig-milk}
+\end{figure}
+
+\begin{enumerate}
+	\item Dado que la caja debe tener volumen fijo $V$, plantee el problema de optimización de minimizar el área de la lámina de cartón original necesaria para obtener la caja con el volumen dado. Planteelo como un problema de mínimo local irrestricto sobre las variables $b, h$.
+	\item Escriba las condiciones de optimalidad de primer orden para este problema.
+	\item \textbf{(parte numérica)} Tomando $V = 1136000 [\text{mm}^3]$, utilice el método de Newton para encontrar las dimensiones óptimas. Verifique que lo son mediante las condiciones suficientes de segundo orden.
+\end{enumerate}
+\item \textbf{(Propuesto)} Utilice el método de gradiente conjugado para resolver el siguiente sistema de ecuaciones iterando desde $x_0 = (0, 0)$.
+\begin{align*}
+2x_1 + x_2 &= 2 \\
+x_1 + 2x_2 &= 1.
+\end{align*}
+
+\end{enumerate}
+
+\end{document}
