@@ -1,0 +1,64 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Guía de Ejercicios 2}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{(La función de Rosenbrock)} Considere la función \(f : \mathbb{R}^2 \to \mathbb{R}\) dada por
+		\[
+			f(x) = 100 (x_2 - x_1^2)^2 + (1 - x_1)^2.
+		\]
+		\begin{enumerate}
+			\item Calcule \(\nabla f(x)\) y \(\nabla^2 f(x)\).
+			\item Verifique que \(x^* = (1, 1)\) es el único punto crítico de esta función.
+			\item Evalúe \(\nabla^2 f(x^*)\) y vea que es definido positivo.
+			\item A partir de \(x_0 = (0, 0)\), efectúe una iteración del método de Newton y entregue el punto \(x_1\) correspondiente ¿Se encuentra cercano al mínimo?
+		\end{enumerate}
+	\item Pruebe que la función \(f(x) = 8x_1 + 12 x_2 + x_1^2 - 2x_2^2\) solo tiene un punto estacionario, el cual es un punto silla.
+	\item Considere la función \(f(x_1, x_2) = (x_1 + x_2^2)^2\). Situados en el punto \(x = (1, 0)\), consideramos la dirección de búsqueda \(p = (-1, 1)\).
+		\begin{enumerate}
+			\item Pruebe que \(p\) es dirección de descenso.
+			\item Encuentre todos los minimizadores del problema \(\min_{\alpha\geq 0} \qty{f(x + p\alpha)}\).
+		\end{enumerate}
+	\item \textbf{(Búsqueda de línea exacta sobre funciones cuadráticas)} Sea \(Q \in \S^n_{++}, b \in \R^n\). Consideramos el problema de minimizar la función cuadrática
+		\[f(x) = \frac12 x^\top Q x - b^\top x\]
+		En que \(x^*\) solución de \(Qx^* = b\) es el único mínimo global de \(f\). Consideremos el método del máximo descenso
+		\[x_{k+1} = x_k - \alpha_k \grad{f}(x_k)\]
+		en que \(\alpha_k\) se escoge para minimizar la función escalar \(\alpha \mapsto f(x_k - \alpha\grad{f}(x_k))\).
+		\begin{enumerate}
+			\item Obtenga una fórmula explícita para \(\alpha_k\) y en consecuencia para la iteración del máximo descenso.
+			\item Sea \(E(x) = \frac12 (x - x^*)^\top Q (x - x^*) = \frac12 \norm{x - x^*}^2_Q\). Pruebe que \(E(x) = f(x) + \frac12 x^{*\top}Qx^*\), de modo que basta establecer propiedades de convergencia sobre el método de descenso de gradiente sobre \(E\).
+			\item Pruebe que se satisface
+				\[E(x_{k+1}) = \qty[1 - \frac{\qty(\grad{f}(x_k)^\top \grad{f}(x_k))^2}{\qty(\grad{f}(x_k)^\top Q \grad{f}(x_k))\qty(\grad{f}(x_k)^\top Q^{-1} \grad{f}(x_k))}] E(x_k)\]
+			\item Considere la desigualdad de Kantorovich: Sea \(Q \in \S^n_{++}\) y asuma que sus valores propios son \(0 < \lambda_1 \leq \dots \leq \lambda_n\). Entonces, para \(x \in \R^n\), se tiene que:
+		\[\frac{(x^\top Q x)(x^\top Q^{-1}x)}{(x^\top x)^2} \leq \frac{(\lambda_1 + \lambda_n)^2}{4\lambda_1\lambda_n}\]
+ Utilice esta desigualdad para describir cualitativamente la convergencia del método del máximo descenso con paso exacto.
+		\end{enumerate}
+	\item Considere el siguiente problema de minimización:
+		\begin{align*}
+			\min_{x_1, x_2} \; &x_1 + x_2 \\
+					   & x_1^2 + x_2^2 - 2 = 0.
+		\end{align*}
+		\begin{enumerate}
+			\item Para \(\mu > 0\) parámetro de penalización, escriba la función objetivo del problema irrestricto asociado y describa sus puntos críticos.
+			\item Encuentre una condición sobre \(\mu\) para que exista un único punto crítico.
+		\end{enumerate}
+	\item Considere el problema siguiente:
+		\begin{align*}
+			\min_{x_1, x_2} \; & -5x_1^2 + x_2^2 \\
+					   & x_1 = 1.
+		\end{align*}
+		\begin{enumerate}
+			\item Encuentre el único minimizador de este problema.
+			\item Pruebe que para todo \(\mu < 10\), el problema correspondiente a la penalización cuadrática es no acotado.
+		\end{enumerate}
+\end{enumerate}
+\end{document}

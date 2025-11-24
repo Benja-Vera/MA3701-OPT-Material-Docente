@@ -1,0 +1,38 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+
+\begin{center}
+    \Huge{\textbf{Auxiliar 8}}\\
+\textit{\large{Dualidad y Programación Lineal}}\\
+    \normalsize
+    \today
+\end{center}
+
+\begin{enumerate}
+	\item Considere el siguiente problema de optimización:
+		\begin{align*}
+			\min_{x \in \mathbb{R}^n}\; & f(x) \\
+						    & Ax \leq b \in \mathbb{R}^m \\
+						    & Cx = d \in \mathbb{R}^p.
+		\end{align*}
+		\begin{enumerate}
+			\item Definiendo el Lagrangeano \(L(x, \lambda, \mu) = f(x) + \lambda^\top(Ax - b) + \mu^\top(Cx - d)\), calcule el problema dual en términos de la función \(f^* : \mathbb{R}^n \to \mathbb{R}\) dada por
+				\[
+					f^*(y) = \sup_{x \in \mathbb{R}^n} \qty{y^\top x - f(x)}.
+				\]
+			\item Deduzca a partir de lo anterior el problema dual de
+				\begin{align*}
+					\min_{x_i > 0}\; & \sum_{i=1}^n x_i \log(x_i) \\
+							 & Ax \leq b \in \mathbb{R}^m \\
+							 & \mathbf{1}^\top x = 1.
+				\end{align*}
+			\item Nótese que el dual obtenido es sencillo de analizar. Sea \((\lambda^*, \mu^*)\) solución del cual. Obtenga a partir de esto un criterio de factibilidad para el primal y una solución en caso de que esta exista.
+		\end{enumerate}
+	\item Suponga que se cuenta con una red de transporte representada por un grafo dirigido \(G = (V, E)\), el cual tiene dos nodos especiales. Un nodo \textit{fuente} \(s \in V\) y un nodo \textit{sumidero} \(t \in V\). Sea \(u_{i,j}\) la capacidad en el arco \((i,j) \in E\). Escriba el problema de maximizar el flujo saliente desde \(s\) de modo que se respeten las capacidades y en cada nodo salvo por, \(s,t\), el flujo neto a través de estos nodos sea nulo.
+\end{enumerate}
+
+\end{document}
