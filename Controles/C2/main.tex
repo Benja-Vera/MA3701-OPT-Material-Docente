@@ -1,0 +1,62 @@
+\documentclass{article}
+\input{imports.tex}
+\input{config.tex}
+
+\begin{document}
+\input{datos-OPT.tex}
+\begin{center}
+    \Huge{\textbf{Control 2}}\\
+\textit{\large{Tiempo: 3:00}}\\
+    \normalsize
+    10 de noviembre de 2025
+\end{center}
+\begin{enumerate}
+	\item Considere la función \(f : \mathbb{R}^n \to \mathbb{R}\) dada por \(f(x) = \norm{x}^3\). Se desea estudiar la convergencia del método de Newton con paso fijo \(\alpha > 0\) sobre esta función. Es decir, estudiamos iteraciones de la forma
+		\[
+			x_{k+1} = x_k - \alpha \qty(\nabla^2 f(x_k))^{-1} \nabla f(x_k).
+		\]
+		\begin{enumerate}
+			\item (1 pt) Demuestre que
+				\[
+					\nabla f(x) = 3 \norm{x} x, \qquad \nabla^2 f(x) = \frac{3}{\norm{x}} \qty(\norm{x}^2 I + xx^\top).
+				\]
+			\item (2 pt) Calcule \((\nabla^2 f(x))^{-1}\). Para ello, puede utilizar la fórmula de inversión de Sherman-Morrison-Woodbury:
+				\[
+					\qty(A + ab^\top)^{-1} = A^{-1} - \frac{A^{-1} ab^\top A^{-1}}{1 + b^\top A^{-1}a}.
+				\]
+			\item (2 pt) Concluya una fórmula general para la iteración del método de Newton \(x_{k+1}\) en términos de \(x_k\) y \(\alpha\).
+			\item (1 pt) Encuentre el intervalo de valores \(\alpha > 0\) para que la sucesión generada por el método de Newton de paso \(\alpha\) sea convergente al mínimo global \(x^* = 0\) desde \textit{cualquier} punto inicial \(x_0 \in \mathbb{R}^n\).
+		\end{enumerate}
+	\item Sea \(f: \mathbb{R}^2 \to \mathbb{R}\) dada por
+		\[
+			f(x, y) = (x - 1)^2 + 4xy + y^4.
+		\]
+		\begin{enumerate}
+			\item (2 pt) Encuentre todos los puntos críticos de \(f\) y decida cuáles de ellos son mínimos locales.
+
+				\textit{Indicación} Pruebe que la matriz Hessiana \(\nabla^2 f(x, y)\) es semi-definida positiva si y solo si se tiene la condición
+				\[
+					3y^2 - 2 > 0.
+				\]
+			\item (2 pt) A partir de \(x_0 = (0, 2)\), efectúe dos iteraciones el método de gradiente con paso constante igual a \(1\). Entregue los puntos \(x_1, x_2\) correspondientes.
+			\item (1 pt) A partir de \(x_2\) la iteración obtenida en (b), efectúe una iteración del método de Newton con paso igual a \(1\). Entregue el punto \(x_3\) correspondiente.
+			\item (1 pt) ¿Qué está ocurriendo con las iteraciones obtenidas? Discuta en relación a los mínimos obtenidos en (a).
+		\end{enumerate}
+	\item Considere el problema con restricciones siguiente:
+		\begin{align*}
+			(\text{P}) : \min_{x_1, x_2}\; & x_1 + 2x_2 \\
+					& \frac{1}{4} x_1^2 + x_2^2 - 1 = 0.
+		\end{align*}
+		\begin{enumerate}
+			\item (1 pt) Utilizando las condiciones de KKT, encuentre todos los puntos críticos de este problema.
+			\item (1 pt) Esboce el conjunto factible de este problema así como el gradiente de la función objetivo. Utilice esto para decidir cuál de los puntos críticos obtenidos es mínimo del problema.
+			\item (2 pt) Dado \(\epsilon>0\), considere el método de penalización cuadrática, con el cual se obtiene el problema irrestricto
+				\[
+					(\text{P}_{\epsilon}) : \min_{x_1, x_2 \in \mathbb{R}} f_\epsilon(x_1, x_2) := (x_1 + 2x_2) + \frac{1}{2\epsilon} \qty(\frac{1}{4} x_1^2 + x_2^2 - 1)^2.
+				\]
+				Obtenga condiciones que describan los puntos críticos de \(f_\epsilon\).
+			\item (2 pt) Haciendo uso de las condiciones obtenidas en (c), encuentre una cota inferior sobre \(\epsilon\) para que exista un solo punto crítico. Describa lo que podría ocurrir con el algoritmo de penalización si esta condición no se cumple.
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}
